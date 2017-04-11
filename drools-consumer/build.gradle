@@ -1,0 +1,62 @@
+group 'com.wang7liang'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    droolsVersion = '6.5.0.Final'
+    springFrameworkVersion = '4.2.5.RELEASE'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        //maven { url "http://nexus.wusong.com:8081/nexus/content/groups/public/" }
+        //maven { url 'http://nexus.tiantong.com/nexus/content/groups/public' }
+        //maven { url 'http://repo.spring.io/libs-release' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE'
+        classpath 'org.springframework:springloaded:1.2.5.RELEASE'
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+    mavenCentral()
+}
+
+
+dependencies {
+    compile project(":drools-dto")
+
+    compile(
+            'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-jdbc',
+            "mysql:mysql-connector-java:5.1.38",
+    )
+
+    compile(
+            "org.kie:kie-api:${droolsVersion}",
+            "org.kie:kie-internal:${droolsVersion}",
+            "org.kie:kie-ci:${droolsVersion}",
+            "org.kie:kie-spring:${droolsVersion}",
+            "org.drools:drools-core:${droolsVersion}",
+            "org.drools:drools-compiler:${droolsVersion}",
+            "org.drools:drools-decisiontables:${droolsVersion}",
+            "org.drools:drools-templates:${droolsVersion}",
+            "org.drools:knowledge-api:${droolsVersion}"
+    )
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

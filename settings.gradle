@@ -1,0 +1,5 @@
+rootProject.name = 'test-project'
+include 'drools-producer'
+include 'drools-consumer'
+include 'drools-dto'
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="clockRule" packages="clockRules">
+        <ksession name="ksession-clockRule"/>
+    </kbase>
+    <kbase name="clockTable" packages="clockTables">
+        <ksession name="ksession-clockTable"/>
+    </kbase>
+</kmodule>

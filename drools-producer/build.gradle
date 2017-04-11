@@ -1,0 +1,51 @@
+group 'com.wang7liang'
+version '1.1.6'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "http://127.0.0.1:8080/kie-drools/maven2/") {
+            authentication(userName: "tomcat", password: "tomcat")
+//            pom.groupId = "wang7liang.test"
+//            pom.artifactId = "test-drools"
+//            pom.version = "1.0.2"
+        }
+    }
+}
+
+
+
+//repositories {
+//    mavenLocal()
+//    maven {
+//        url "http://maven.aliyun.com/nexus/content/groups/public/"
+//    }
+//    mavenCentral()
+//}
+//
+//ext {
+//    droolsVersion = '6.5.0.Final'
+//    springFrameworkVersion = '4.2.5.RELEASE'
+//}
+//
+//dependencies {
+//    compile(
+//            "org.kie:kie-api:${droolsVersion}",
+//            "org.kie:kie-internal:${droolsVersion}",
+//            "org.kie:kie-ci:${droolsVersion}",
+//            "org.kie:kie-spring:${droolsVersion}",
+//            "org.drools:drools-core:${droolsVersion}",
+//            "org.drools:drools-compiler:${droolsVersion}",
+//            "org.drools:drools-decisiontables:${droolsVersion}",
+//            "org.drools:drools-templates:${droolsVersion}",
+//            "org.drools:knowledge-api:${droolsVersion}"
+//    )
+//
+//    testCompile group: 'junit', name: 'junit', version: '4.11'
+//}

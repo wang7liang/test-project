@@ -1,0 +1,47 @@
+package com.wang7liang.drools
+
+import com.wang7liang.dto.Clock;
+
+rule "run"
+    no-loop true
+    salience 1
+    when
+        c:Clock()
+    then
+        System.out.println(c.toString());
+        Thread.sleep(1000);
+        c.setSecond(c.getSecond()+1);
+        update(c);
+end
+
+rule "second"
+    no-loop true
+    salience 2
+    when
+        c:Clock(second==60)
+    then
+        c.setMinute(c.getMinute()+1);
+        c.setSecond(0);
+        update(c);
+end
+
+rule "minute"
+    no-loop true
+    salience 3
+    when
+        c:Clock(minute==60)
+    then
+        c.setHour(c.getHour()+1);
+        c.setMinute(0);
+        update(c);
+end
+
+rule "hour"
+    no-loop true
+    salience 4
+    when
+        c:Clock(hour==12)
+    then
+        c.setHour(0);
+        update(c);
+end
